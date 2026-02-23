@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="IraWebProject.AppHost/IraWebProject.AppHost.csproj" />
+  <Project Path="IraWebProject.ServiceDefaults/IraWebProject.ServiceDefaults.csproj" />
+  <Project Path="IraWebProject/IraWebProject.csproj" />
+</Solution>

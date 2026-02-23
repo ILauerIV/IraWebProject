@@ -1,0 +1,9 @@
+﻿@inject IColorPickerViewModel ViewModel
+<h3>ColorPicker</h3>
+@page "/colorpicker"
+@rendermode InteractiveServer
+
+<PageTitle>ColorPicker</PageTitle>
+<h1>ColorPicker</h1>
+<input type="color" id="head" name="head" value="@ViewModel.InColor" @onchange="ViewModel.UpdateColor">
+<label for="head">@ViewModel.InColor</label>
