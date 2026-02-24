@@ -5,25 +5,32 @@
 namespace IraWebProject.Migrations
 {
     /// <inheritdoc />
-    public partial class AddBackgroundColorToApplicationUser : Migration
+    public partial class AddStringColor : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.AddColumn<int>(
+            migrationBuilder.AlterColumn<string>(
                 name: "BackgroundColor",
                 table: "AspNetUsers",
-                type: "int",
+                type: "nvarchar(max)",
                 nullable: false,
-                defaultValue: 0);
+                defaultValue: "",
+                oldClrType: typeof(int),
+                oldType: "int",
+                oldNullable: true);
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropColumn(
+            migrationBuilder.AlterColumn<int>(
                 name: "BackgroundColor",
-                table: "AspNetUsers");
+                table: "AspNetUsers",
+                type: "int",
+                nullable: true,
+                oldClrType: typeof(string),
+                oldType: "nvarchar(max)");
         }
     }
 }

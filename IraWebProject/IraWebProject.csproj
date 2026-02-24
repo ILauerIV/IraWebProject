@@ -19,4 +19,8 @@
     <ProjectReference Include="..\IraWebProject.ServiceDefaults\IraWebProject.ServiceDefaults.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Data\Migrations\" />
+  </ItemGroup>
+
 </Project>

@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace IraWebProject.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20260223190711_AddBackgroundColorToApplicationUser")]
-    partial class AddBackgroundColorToApplicationUser
+    [Migration("20260224214645_AddNullableColor")]
+    partial class AddNullableColor
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -33,7 +33,7 @@ namespace IraWebProject.Migrations
                     b.Property<int>("AccessFailedCount")
                         .HasColumnType("int");
 
-                    b.Property<int>("BackgroundColor")
+                    b.Property<int?>("BackgroundColor")
                         .HasColumnType("int");
 
                     b.Property<string>("ConcurrencyStamp")
