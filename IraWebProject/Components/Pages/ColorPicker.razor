@@ -1,8 +1,19 @@
 ﻿@inject IColorPickerViewModel ViewModel
 @page "/colorpicker"
 @rendermode InteractiveServer
+@using Microsoft.AspNetCore.Authorization
+
+@attribute [Authorize]
 
 <PageTitle>ColorPicker</PageTitle>
 <h1>ColorPicker</h1>
 <input type="color" id="head" name="head" value="@ViewModel.InColor" @onchange="ViewModel.UpdateColor">
 <label for="head">@ViewModel.InColor</label>
+
+
+<AuthorizeView>
+
+
+<button onclick="@ViewModel.SaveColor(@context.User)">Save Color</button>
+    <label></label>
+</AuthorizeView>

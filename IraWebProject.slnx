@@ -1,5 +1,6 @@
 <Solution>
   <Project Path="IraWebProject.AppHost/IraWebProject.AppHost.csproj" />
   <Project Path="IraWebProject.ServiceDefaults/IraWebProject.ServiceDefaults.csproj" />
+  <Project Path="IraWebProject.UnitTest/IraWebProject.UnitTest.csproj" Id="41f9d589-d0f4-401f-ae40-ac1402fea1a2" />
   <Project Path="IraWebProject/IraWebProject.csproj" />
 </Solution>

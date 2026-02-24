@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Components;
+using System.Security.Claims;
 
 namespace IraWebProject.ViewModels.Interfaces
 {
@@ -6,5 +7,7 @@ namespace IraWebProject.ViewModels.Interfaces
     {
          string InColor { get; set; }
         Task UpdateColor(ChangeEventArgs e);
+        Task<bool> SaveColor(ClaimsPrincipal p);
+
     }
 }

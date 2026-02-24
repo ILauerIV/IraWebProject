@@ -1,14 +1,22 @@
-﻿using IraWebProject.ViewModels.Interfaces;
+﻿using IraWebProject.Data;
+using IraWebProject.ViewModels.Interfaces;
 using Microsoft.AspNetCore.Components;
-
+using Microsoft.AspNetCore.Components.Authorization;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore.Update.Internal;
+using System.Security.Claims;
 namespace IraWebProject.ViewModels
 {
     public class ColorPickerViewModel : IColorPickerViewModel
     {
+        private readonly IServiceScopeFactory _scopeFactory;
+        public ColorPickerViewModel(IServiceScopeFactory scopeFactory)
+        {
+            _scopeFactory = scopeFactory;
 
-        public ColorPickerViewModel()
-        { }
+        }
+
         private string _color;
         public string InColor
         { 
@@ -24,5 +32,24 @@ namespace IraWebProject.ViewModels
             InColor = e.Value.ToString();
             
         }
+
+        public async Task<bool>  SaveColor( ClaimsPrincipal p)
+        {
+            
+            using var scope = _scopeFactory.CreateAsyncScope();
+            var userManager = scope.ServiceProvider.GetRequiredService<UserManager<ApplicationUser>>();
+            var user = await userManager.GetUserAsync(p);
+            user.BackgroundColor = InColor;
+            await userManager.UpdateAsync(user);
+            return  true;
+        }
+
+       /* private async Task<bool> SetCurrentUserColor()
+        {
+            using var scope = _scopeFactory.CreateAsyncScope();
+            var userManager = scope.ServiceProvider.GetRequiredService<UserManager<ApplicationUser>>();
+            var user = await userManager.get;
+        }*/
+
     }
 }
