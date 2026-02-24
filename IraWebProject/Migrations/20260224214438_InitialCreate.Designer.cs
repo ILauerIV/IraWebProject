@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace IraWebProject.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20260223190711_AddBackgroundColorToApplicationUser")]
-    partial class AddBackgroundColorToApplicationUser
+    [Migration("20260224214438_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
