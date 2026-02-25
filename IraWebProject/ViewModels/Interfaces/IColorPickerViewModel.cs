@@ -8,6 +8,7 @@ namespace IraWebProject.ViewModels.Interfaces
          string InColor { get; set; }
         Task UpdateColor(ChangeEventArgs e);
         Task<bool> SaveColor(ClaimsPrincipal p);
+        Task<bool> SetCurrentUserColor(ClaimsPrincipal p);
 
     }
 }

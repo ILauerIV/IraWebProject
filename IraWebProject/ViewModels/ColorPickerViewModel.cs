@@ -44,12 +44,19 @@ namespace IraWebProject.ViewModels
             return  true;
         }
 
-       /* private async Task<bool> SetCurrentUserColor()
+        public async Task<bool> SetCurrentUserColor(ClaimsPrincipal p)
         {
             using var scope = _scopeFactory.CreateAsyncScope();
             var userManager = scope.ServiceProvider.GetRequiredService<UserManager<ApplicationUser>>();
-            var user = await userManager.get;
-        }*/
+            var user = await userManager.GetUserAsync(p);
+            if (!string.IsNullOrEmpty(user.BackgroundColor))
+            {
+                InColor = user.BackgroundColor;
+                return true; 
+            }
+
+            return false; 
+        }
 
     }
 }

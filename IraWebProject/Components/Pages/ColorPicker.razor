@@ -1,4 +1,5 @@
 ﻿@inject IColorPickerViewModel ViewModel
+@inject AuthenticationStateProvider AuthenticationStateProvider
 @page "/colorpicker"
 @rendermode InteractiveServer
 @using Microsoft.AspNetCore.Authorization
@@ -10,10 +11,19 @@
 <input type="color" id="head" name="head" value="@ViewModel.InColor" @onchange="ViewModel.UpdateColor">
 <label for="head">@ViewModel.InColor</label>
 
-
-<AuthorizeView>
-
-
-<button onclick="@ViewModel.SaveColor(@context.User)">Save Color</button>
-    <label></label>
+<AuthorizeView Context="auth">
+    <Authorized>
+        <button @onclick="() => ViewModel.SaveColor(auth.User)">Save Color</button>
+        <label></label>
+    </Authorized>
 </AuthorizeView>
+
+@code {
+    protected override async Task OnInitializedAsync()
+    {
+        var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
+        var user = authState.User;
+       await ViewModel.SetCurrentUserColor(user);
+        await base.OnInitializedAsync();
+    }
+}
